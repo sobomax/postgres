@@ -1083,6 +1083,14 @@ LANGUAGE INTERNAL
 STRICT VOLATILE
 AS 'pg_create_logical_replication_slot';
 
+CREATE OR REPLACE FUNCTION pg_replication_slot_advance (
+    IN slot_name name, IN upto_lsn pg_lsn,
+    OUT slot_name name, OUT end_lsn pg_lsn)
+RETURNS RECORD
+LANGUAGE INTERNAL
+STRICT VOLATILE
+AS 'pg_replication_slot_advance';
+
 CREATE OR REPLACE FUNCTION
   make_interval(years int4 DEFAULT 0, months int4 DEFAULT 0, weeks int4 DEFAULT 0,
                 days int4 DEFAULT 0, hours int4 DEFAULT 0, mins int4 DEFAULT 0,
